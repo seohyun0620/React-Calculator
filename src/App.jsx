@@ -13,8 +13,9 @@ import styles from './components/Button.module.css';
 //  소숫점,연산자 연달아 못쓰게 처리 00
 
 //  del누르고 연산자 누르면 안눌림 : 6+에서 +지우고 6상태에서 - 누르면 안눌림 00
+
+//  연산 완료하고 del 누르면 전부 다 사라짐 00
 //---------------------------------------------------------------------------------
-//  연산 완료하고 del 누르면 전부 다 사라짐
 
 //  숫자누르고 연산자 누르고 = 누르면 오류 ->result 상태값도 추가?
 
@@ -58,8 +59,11 @@ function App() {
     }
 
     function handleClickDel(){
+      if(typeof num === 'number'){ //연산 완료하고 del 누르면 전부 다 사라지는 것 해결 (eval()써서 숫자형이니깐 String()을 사용해서 다시 문자열로 바꿔 slice()가능하게 함)
+        setNum(String(num));
+      }
       setNum(num => num.slice(0, -1));
-      setOper(true); // <<어제 추가한거니까 확인해보기
+      setOper(true);
     }
 
     function handleClickAc(){
