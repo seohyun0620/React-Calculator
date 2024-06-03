@@ -1,5 +1,6 @@
 /* grid container */
 .container {
+  max-width: 400px;
 	display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, minmax(65px, auto));
@@ -12,12 +13,17 @@
   border-style:solid;
   border-color: rgb(186, 186, 186);
   border-radius: 30px;
+  font-size: 1.6rem;
+  text-align: end;
+  padding: 10px;
+  overflow: auto;
 }
+
 /* grid item */
 .container button{
   border-radius: 30px;
   border-color:rgb(192, 193, 195) ;
-  font-size: 1.2rem
+  font-size: 1.4rem
 }
 .container button:hover{
   border-color: rgb(90, 90, 90);
