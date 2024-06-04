@@ -2,24 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import styles from "./components/Button.module.css";
 
-//  ac버튼 구현 00
-
-//  del버튼 구현 00
-
-//  소숫점,연산자 2번 못쓰게 예외 처리 00
-
-//  첫입력에 연산자,소숫점,= 못쓰게 예외처리 00
-
-//  소숫점,연산자 연달아 못쓰게 처리 00
-
-//  del누르고 연산자 누르면 안눌림 : 6+에서 +지우고 6상태에서 - 누르면 안눌림 00
-
-//  연산 완료하고 del 누르면 전부 다 사라짐 00
-
-//  숫자누르고 연산자 누르고 = 누르면 오류 ->result 상태값도 추가?
-//---------------------------------------------------------------------------------
-//  무한대는 오류나도록 예외처리
-
 function App() {
   const [num, setNum] = useState(""); //입력 받은 숫자 상태
   const [oper, setOper] = useState(false); //연산자 상태(=빼고)
@@ -27,14 +9,11 @@ function App() {
   function handleClickNum(e) {
     setNum((prev) => prev + e.target.value); //이전 state를 기반으로 state 업데이트
     setOper(true);
-    console.log(num);
-    console.log(typeof e.target.value);
   }
 
   function handleClickOper(e) {
     if (oper) {
       setNum((prev) => prev + e.target.value);
-      console.log(typeof e.target.value);
     }
     setOper(false);
   }
@@ -42,20 +21,10 @@ function App() {
   function handleClickResult() {
     try { //숫자 -> 연산자 -> = 순으로 눌렀을 때 발생하는 오류 해결 코드
       if (num !== "") { //첫입력에 =이 들어가는 것을 방지
-        console.log(num);
-        console.log(typeof num);
-
         setNum(eval(num));
-        console.log(num);
-        // const str=num;
-        // const arr=str.split(/(\+|\*|\/|-|%)/); /* 문자열을 구분자 기준으로 잘라서 배열로 반환 */
-        // console.log(arr);
-
-        // const result =new Function();
-        // console.log(result);
       }
-    } catch (error) {
-      console.log('오류가 발생했습니다:',error);
+    } catch (error) { //계산할 수 없는 수식들은 에러 처리
+      console.log('계산할 수 없는 수식입니다 :',error);
       handleClickAc(); //에러가 발생하면 num초기화
     }
   }
