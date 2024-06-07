@@ -1,6 +1,6 @@
 # React-Calculator
 
-(이미지)
+<img src="https://github.com/seohyun0620/React-Calculator/blob/main/123.JPG" width="350" height="400"/>
 
 ## 개인 프로젝트
 ## 개발 기간 : 2024.05
